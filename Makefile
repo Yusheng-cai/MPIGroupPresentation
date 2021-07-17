@@ -1,7 +1,7 @@
 MPICC=/usr/local/bin/mpicc
 MPICXX=/usr/local/bin/mpic++
 
-all: hello
+all: hello.out BlockingComm.out Bcast.out MyBcast.out
 
 hello.out: hello.cpp
 	${MPICXX} hello.cpp -o hello
