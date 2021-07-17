@@ -25,7 +25,7 @@ int main(int argc, char** argv)
     MPI_Bcast(&data_size, 1, MPI_INT, root, MPI_COMM_WORLD);
     std::cout << "This is processor " << rank << ". The data size is " << data_size << std::endl;
 
-    int data[data_size];
+    int* data = new int[data_size];
 
     // set the data to non-empty if we are on root
     if ( rank == root )
@@ -38,9 +38,10 @@ int main(int argc, char** argv)
 
     // std::cout << "Before bcast, data = " << data << std::endl;
 
-    MPI_Bcast(&data, data_size, MPI_INT, root, MPI_COMM_WORLD);
+    MPI_Bcast(data, data_size, MPI_INT, root, MPI_COMM_WORLD);
 
     // std::cout << "After bcast, processor = " << rank << ", data = " << data << std::endl;
 
+    delete[] data;
     MPI_Finalize();
 }
