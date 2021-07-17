@@ -1,5 +1,5 @@
-MPICC=/usr/local/bin/mpicc
-MPICXX=/usr/local/bin/mpic++
+MPICC=mpicc
+MPICXX=mpic++
 
 all: hello.out BlockingComm.out Bcast.out MyBcast.out
 
