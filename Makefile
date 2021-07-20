@@ -9,9 +9,6 @@ hello.out: hello.cpp
 BlockingComm.out: BlockingComm.cpp
 	${MPICXX} BlockingComm.cpp -o BlockingComm
 
-MyBcast.out: MyBcast.cpp
-	${MPICXX} MyBcast.cpp -o MyBcast.out
-
 Bcast.out: Bcast.cpp
 	${MPICXX} Bcast.cpp -o Bcast.out
 
