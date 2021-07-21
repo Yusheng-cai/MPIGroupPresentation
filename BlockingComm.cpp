@@ -28,7 +28,7 @@ int main(int argc, char** argv)
         {
             for (int j=0;j<NUM_BUFFER;j++)
             {
-                sent_number[j] = i + 1;
+                sent_number[j] = i;
             }
             MPI_Send(&sent_number, NUM_BUFFER, MPI_INT, i, i, MPI_COMM_WORLD);
         }
