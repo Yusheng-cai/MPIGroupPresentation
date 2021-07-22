@@ -2,7 +2,7 @@
 #include <sstream>
 #include <mpi.h>
 
-void my_bcast(void* data, int count, MPI_Datatype type, int root, MPI_Comm communicator);
+// void my_bcast(void* data, int count, MPI_Datatype type, int root, MPI_Comm communicator);
 
 int main(int argc, char** argv)
 {
@@ -48,40 +48,40 @@ int main(int argc, char** argv)
     std::cout << "End - start = " << end-start << " from rank " << rank << " for MPI_Bcast." << std::endl;
 
 
-    MPI_Barrier(MPI_COMM_WORLD);
+    // MPI_Barrier(MPI_COMM_WORLD);
 
-    start = MPI_Wtime();
-    my_bcast(data, data_size, MPI_INT, root, MPI_COMM_WORLD);
-    end = MPI_Wtime();
+    // start = MPI_Wtime();
+    // my_bcast(data, data_size, MPI_INT, root, MPI_COMM_WORLD);
+    // end = MPI_Wtime();
 
-    MPI_Barrier(MPI_COMM_WORLD);
-    std::cout << "End - start = " << end-start << " from rank " << rank << " for my_bcast." << std::endl;
+    // MPI_Barrier(MPI_COMM_WORLD);
+    // std::cout << "End - start = " << end-start << " from rank " << rank << " for my_bcast." << std::endl;
 
     delete[] data;
 
     MPI_Finalize();
 }
 
-void my_bcast(void* data, int count, MPI_Datatype type, int root, MPI_Comm communicator)
-{
-    int rank;
-    int size;
+// void my_bcast(void* data, int count, MPI_Datatype type, int root, MPI_Comm communicator)
+// {
+//     int rank;
+//     int size;
 
-    MPI_Comm_size(communicator, &size);
-    MPI_Comm_rank(communicator, &rank);
+//     MPI_Comm_size(communicator, &size);
+//     MPI_Comm_rank(communicator, &rank);
 
-    int recv_data;
+//     int recv_data;
 
-    if ( rank == root )
-    {
-        for (int i =0; i< size; i++)
-        {
-            if (i != root)
-                MPI_Send(data, count, type, i, 0, communicator);
-        }
-    }
-    else 
-    {
-        MPI_Recv(data, count, type, root, MPI_ANY_TAG, communicator,MPI_STATUS_IGNORE);
-    }
-}
+//     if ( rank == root )
+//     {
+//         for (int i =0; i< size; i++)
+//         {
+//             if (i != root)
+//                 MPI_Send(data, count, type, i, 0, communicator);
+//         }
+//     }
+//     else 
+//     {
+//         MPI_Recv(data, count, type, root, MPI_ANY_TAG, communicator,MPI_STATUS_IGNORE);
+//     }
+//}
